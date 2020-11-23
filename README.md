@@ -9,6 +9,6 @@ In develpoment
 ### Technologies 
 
 Spring-Boot\
-(Security,jpa,starter-web,mysql,jjwt)\
+(Security, jpa, starter-web, mysql, jjwt)\
 Database : MySQL\
 
