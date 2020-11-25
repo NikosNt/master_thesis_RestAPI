@@ -71,9 +71,7 @@ public class AuthController {
 												 userDetails.getEmail(), 
 												 roles,
 				                                userDetails.getFname(),//edw egw
-												userDetails.getLname(),
-												userDetails.getCoordinatex(),
-												userDetails.getCoordinatey()));
+												userDetails.getLname()));
 	}
 
 	@PostMapping("/signup")
@@ -95,9 +93,7 @@ public class AuthController {
 							 signUpRequest.getEmail(),
 							 encoder.encode(signUpRequest.getPassword()),
 								signUpRequest.getFname(),//edw egw
-								signUpRequest.getLname(),
-								signUpRequest.getCoordinatex(),
-								signUpRequest.getCoordinatey());
+								signUpRequest.getLname());
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();

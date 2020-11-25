@@ -26,13 +26,12 @@ public class UserDetailsImpl implements UserDetails {
 
 	private String fname;//edw egw
 	private String lname;
-	private String coordinatex;
-	private String coordinatey;
+
 
 	private Collection<? extends GrantedAuthority> authorities;
 
 	public UserDetailsImpl(Long id, String username, String email, String password,
-			Collection<? extends GrantedAuthority> authorities,String fname, String lname, String coordinatex, String coordinatey) {//edw egw
+			Collection<? extends GrantedAuthority> authorities,String fname, String lname ) {//edw egw
 		this.id = id;
 		this.username = username;
 		this.email = email;
@@ -41,8 +40,7 @@ public class UserDetailsImpl implements UserDetails {
 
 		this.fname = fname;//edw egw
 		this.lname = lname;
-		this.coordinatex = coordinatex;
-		this.coordinatey = coordinatey;
+
 	}
 
 	public static UserDetailsImpl build(User user) {
@@ -57,9 +55,7 @@ public class UserDetailsImpl implements UserDetails {
 				user.getPassword(), 
 				authorities,
 				user.getFname(),//edw egw
-				user.getLname(),
-				user.getCoordinatex(),
-				user.getCoordinatey());
+				user.getLname());
 	}
 
 	@Override
@@ -84,13 +80,6 @@ public class UserDetailsImpl implements UserDetails {
 		return lname;
 	}
 
-	public String getCoordinatex() {
-		return coordinatex;
-	}
-
-	public String getCoordinatey() {
-		return coordinatey;
-	}
 
 	@Override
 	public String getPassword() {

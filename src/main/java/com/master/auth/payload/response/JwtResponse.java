@@ -15,7 +15,7 @@ public class JwtResponse {
 	private String coordinatex;
 	private String coordinatey;
 
-	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles,String fname, String lname, String coordinatex, String coordinatey) {
+	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles,String fname, String lname) {
 		this.token = accessToken;
 		this.id = id;
 		this.username = username;
@@ -24,8 +24,7 @@ public class JwtResponse {
 
 		this.fname = fname;//edw egw
 		this.lname = lname;
-		this.coordinatex = coordinatex;
-		this.coordinatey = coordinatey;
+
 	}
 
 	public String getAccessToken() {
@@ -89,21 +88,7 @@ public class JwtResponse {
 		this.lname = lname;
 	}
 
-	public String getCoordinatex() {
-		return coordinatex;
-	}
 
-	public void setCoordinatex(String coordinatex) {
-		this.coordinatex = coordinatex;
-	}
-
-	public String getCoordinatey() {
-		return coordinatey;
-	}
-
-	public void setCoordinatey(String coordinatey) {
-		this.coordinatey = coordinatey;
-	}
 
 
 

@@ -22,8 +22,7 @@ public class SignupRequest {
 
     private String fname;//edw egw
     private String lname;
-    private String coordinatex;
-    private String coordinatey;
+
   
     public String getUsername() {
         return username;
@@ -70,21 +69,7 @@ public class SignupRequest {
         this.lname = lname;
     }
 
-    public String getCoordinatex() {
-        return coordinatex;
-    }
 
-    public void setCoordinatex(String coordinatex) {
-        this.coordinatex = coordinatex;
-    }
-
-    public String getCoordinatey() {
-        return coordinatey;
-    }
-
-    public void setCoordinatey(String coordinatey) {
-        this.coordinatey = coordinatey;
-    }
     
     public void setRole(Set<String> role) {
       this.role = role;

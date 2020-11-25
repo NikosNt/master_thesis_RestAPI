@@ -34,8 +34,6 @@ public class User {
 
 	private String fname;//edw egw
 	private String lname;
-	private String coordinatex;
-	private String coordinatey;
 
 
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -47,14 +45,12 @@ public class User {
 	public User() {
 	}
 
-	public User(String username, String email, String password, String fname, String lname, String coordinatex, String coordinatey) {
+	public User(String username, String email, String password, String fname, String lname) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.fname = fname;//edw egw
 		this.lname = lname;
-		this.coordinatex = coordinatex;
-		this.coordinatey = coordinatey;
 	}
 
 	public Long getId() {
@@ -105,21 +101,6 @@ public class User {
 		this.lname = lname;
 	}
 
-	public String getCoordinatex() {
-		return coordinatex;
-	}
-
-	public void setCoordinatex(String coordinatex) {
-		this.coordinatex = coordinatex;
-	}
-
-	public String getCoordinatey() {
-		return coordinatey;
-	}
-
-	public void setCoordinatey(String coordinatey) {
-		this.coordinatey = coordinatey;
-	}
 
 	public Set<Role> getRoles() {
 		return roles;
