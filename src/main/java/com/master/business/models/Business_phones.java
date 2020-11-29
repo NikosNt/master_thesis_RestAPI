@@ -3,7 +3,7 @@ package com.master.business.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "business_owner")
+@Table(name = "business_phones")
 public class Business_phones {
 
     @Id
