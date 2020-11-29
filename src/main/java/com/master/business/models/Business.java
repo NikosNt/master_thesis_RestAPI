@@ -29,49 +29,21 @@ public class Business {
         this.ref = ref;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
 
-    public String getType() {
-        return type;
-    }
+    public String getBusiness_name() { return business_name; }
+    public void setBusiness_name(String business_name) { this.business_name = business_name; }
 
-    public void setType(String type) {
-        this.type = type;
-    }
+    public Float getRating() { return rating; }
+    public void setRating(Float rating) { this.rating = rating; }
 
-    public String getBusiness_name() {
-        return business_name;
-    }
+    public String getInfo() { return info; }
+    public void setInfo(String info) { this.info = info; }
 
-    public void setBusiness_name(String business_name) {
-        this.business_name = business_name;
-    }
-
-    public Float getRating() {
-        return rating;
-    }
-
-    public void setRating(Float rating) {
-        this.rating = rating;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-    public String getRef() {
-        return ref;
-    }
-
+    public String getRef() { return ref; }
     public void setRef(String ref) { this.ref = ref; }
 }

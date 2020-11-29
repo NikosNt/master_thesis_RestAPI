@@ -18,15 +18,15 @@ public class BusinessController {
     @Autowired
     BusinessService businessService;
 
-    @GetMapping("/all")
-    public List<Business> list() {
-        System.out.println("Mphka ???");
-        return businessService.listAllBusiness();
-    }
-
 //    @GetMapping("/all")
-//    public ResponseEntity< List<Business>>list() {
-//        System.out.println("Mphka ???");
-//        return new ResponseEntity<>( businessService.listAllBusiness(),HttpStatus.OK);
+//    public List<Business> list() {
+//
+//        return businessService.listAllBusiness();
 //    }
+
+    @GetMapping("/all")
+    public ResponseEntity< List<Business>>list() {
+        return new ResponseEntity<>( businessService.listAllBusiness()
+                                     ,HttpStatus.OK);
+    }
 }
