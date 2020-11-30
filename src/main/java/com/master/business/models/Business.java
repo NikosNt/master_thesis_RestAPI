@@ -26,6 +26,9 @@ public class Business {
     @OneToMany(mappedBy = "business",cascade = CascadeType.ALL)
     private Set<Business_owner>  owner = new HashSet<>();
 
+    @OneToMany(mappedBy = "business",cascade = CascadeType.ALL)
+    private Set<Business_address>  address = new HashSet<>();
+
     public Business() {
     }
 
@@ -36,7 +39,6 @@ public class Business {
         this.info = info;
         this.ref = ref;
     }
-
 
 
     public Long getId() { return id; }
@@ -60,7 +62,6 @@ public class Business {
     public Set<Business_phones> getPhones() {
         return phones;
     }
-
     public void setPhones(Set<Business_phones> phones) {
         this.phones = phones;
 
@@ -69,15 +70,21 @@ public class Business {
         }
     }
 
-    public Set<Business_owner> getOwner() {
-        return owner;
-    }
-
+    public Set<Business_owner> getOwner() { return owner; }
     public void setOwner(Set<Business_owner> owner) {
         this.owner = owner;
 
         for(Business_owner o : owner){
             o.setBusiness(this);
+        }
+    }
+
+    public Set<Business_address> getAddress() { return address; }
+    public void setAddress(Set<Business_address> address) {
+        this.address = address;
+
+        for(Business_address a : address){
+            a.setBusiness(this);
         }
     }
 }

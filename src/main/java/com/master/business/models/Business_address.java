@@ -1,5 +1,7 @@
 package com.master.business.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +10,7 @@ public class Business_address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long business_id;
+    private Long id;
     private String city;
     private String street;
     private Integer zip_code;
@@ -16,11 +18,15 @@ public class Business_address {
     private Float latitude;
     private Float longitude;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "business_id", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Business business;
+
     public Business_address() {
     }
 
-    public Business_address(Long business_id, String city, String street, Integer zip_code, Integer street_number, Float latitude, Float longitude) {
-        this.business_id = business_id;
+    public Business_address( String city, String street, Integer zip_code, Integer street_number, Float latitude, Float longitude) {
         this.city = city;
         this.street = street;
         this.zip_code = zip_code;
@@ -29,9 +35,9 @@ public class Business_address {
         this.longitude = longitude;
     }
 
-    public Long getId() { return business_id; }
+    public Long getId() { return id; }
 
-    public void setId(Long business_id) { this.business_id = business_id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getCity() { return city; }
     public void setCity(String city) { this.city = city; }
@@ -50,4 +56,7 @@ public class Business_address {
 
     public Float getLongitude() { return longitude; }
     public void setLongitude(Float longitude) { this.longitude = longitude; }
+
+    public Business getBusiness() { return business; }
+    public void setBusiness(Business business) { this.business = business; }
 }

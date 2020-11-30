@@ -23,7 +23,6 @@ public class Business_owner {
     }
 
     public Business_owner( String fname, String lname) {
-
         this.fname = fname;
         this.lname = lname;
     }
@@ -45,7 +44,6 @@ public class Business_owner {
     public Business getBusiness() {
         return business;
     }
-
     public void setBusiness(Business business) {
         this.business = business;
     }

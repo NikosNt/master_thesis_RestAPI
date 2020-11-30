@@ -24,28 +24,4 @@ public class BusinessController {
         return new ResponseEntity<>( businessService.listAllBusiness(),HttpStatus.OK);
     }
 
-    @Autowired
-    Business_addressService addressService;
-
-    @GetMapping("/all/address")
-    public ResponseEntity<?>listAddress() {
-        return new ResponseEntity<>( addressService.listAllAddress(),HttpStatus.OK);
-    }
-
-    @Autowired
-    Business_ownerService ownerService;
-
-    @GetMapping("/all/owners")
-    public ResponseEntity<?>listOwners() {
-        return new ResponseEntity<>( ownerService.listAllOwners(),HttpStatus.OK);
-    }
-
-    @Autowired
-    Business_phonesService phonesService;
-
-    @GetMapping("/all/phones")
-    public ResponseEntity<?> listPhones() {
-        return new ResponseEntity<>( phonesService.listAllPhones(),HttpStatus.OK);
-    }
-
 }
