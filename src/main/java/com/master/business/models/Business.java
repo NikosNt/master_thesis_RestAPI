@@ -1,5 +1,7 @@
 package com.master.business.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,17 +19,25 @@ public class Business {
     private String info;
     private String ref;
 
+    @OneToMany(mappedBy = "business",cascade = CascadeType.ALL)
+    //@JsonIgnoreProperties("business")
+    private Set<Business_phones>  phones = new HashSet<>();
+
+    @OneToMany(mappedBy = "business",cascade = CascadeType.ALL)
+    private Set<Business_owner>  owner = new HashSet<>();
+
     public Business() {
     }
 
-    public Business(Long id, String type, String business_name, Float rating, String info, String ref) {
-        this.id = id;
+    public Business( String type, String business_name, Float rating, String info, String ref) {
         this.type = type;
         this.business_name = business_name;
         this.rating = rating;
         this.info = info;
         this.ref = ref;
     }
+
+
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -46,4 +56,28 @@ public class Business {
 
     public String getRef() { return ref; }
     public void setRef(String ref) { this.ref = ref; }
+
+    public Set<Business_phones> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(Set<Business_phones> phones) {
+        this.phones = phones;
+
+        for(Business_phones p : phones){
+            p.setBusiness(this);
+        }
+    }
+
+    public Set<Business_owner> getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Set<Business_owner> owner) {
+        this.owner = owner;
+
+        for(Business_owner o : owner){
+            o.setBusiness(this);
+        }
+    }
 }

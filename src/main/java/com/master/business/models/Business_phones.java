@@ -1,5 +1,7 @@
 package com.master.business.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 @Entity
@@ -8,20 +10,48 @@ public class Business_phones {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long business_id;
+    private Long id;
     private String phone_number;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "business_id", nullable = false)
+   // @JsonIgnoreProperties("phones")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Business business;
+
 
     public Business_phones() {
     }
 
-    public Business_phones(Long business_id, String phone_number) {
-        this.business_id = business_id;
+
+    public Business_phones(  String phone_number) {
+     //   this.id = id;
         this.phone_number = phone_number;
     }
 
-    public Long getBusiness_id() { return business_id; }
-    public void setBusiness_id(Long business_id) { this.business_id = business_id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getPhone_number() { return phone_number; }
-    public void setPhone_number(String phone_number) { this.phone_number = phone_number; }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+
+
 }

@@ -13,49 +13,39 @@ import java.util.NoSuchElementException;
 
 //@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/businesses")
+@RequestMapping("/api/services")
 public class BusinessController {
 
     @Autowired
     BusinessService businessService;
 
-//    @GetMapping("/all")
-//    public List<Business> list() {
-//
-//        return businessService.listAllBusiness();
-//    }
-
     @GetMapping("/all/business")
-    public ResponseEntity< List<Business>>listBusiness() {
-        return new ResponseEntity<>( businessService.listAllBusiness()
-                                     ,HttpStatus.OK);
+    public ResponseEntity<?>listBusiness() {
+        return new ResponseEntity<>( businessService.listAllBusiness(),HttpStatus.OK);
     }
 
     @Autowired
     Business_addressService addressService;
 
     @GetMapping("/all/address")
-    public ResponseEntity< List<Business_address>>listAddress() {
-        return new ResponseEntity<>( addressService.listAllAddress()
-                                    ,HttpStatus.OK);
+    public ResponseEntity<?>listAddress() {
+        return new ResponseEntity<>( addressService.listAllAddress(),HttpStatus.OK);
     }
 
     @Autowired
     Business_ownerService ownerService;
 
     @GetMapping("/all/owners")
-    public ResponseEntity< List<Business_owner>>listOwners() {
-        return new ResponseEntity<>( ownerService.listAllOwners()
-                ,HttpStatus.OK);
+    public ResponseEntity<?>listOwners() {
+        return new ResponseEntity<>( ownerService.listAllOwners(),HttpStatus.OK);
     }
 
     @Autowired
     Business_phonesService phonesService;
 
     @GetMapping("/all/phones")
-    public ResponseEntity< List<Business_phones>>listPhones() {
-        return new ResponseEntity<>( phonesService.listAllPhones()
-                ,HttpStatus.OK);
+    public ResponseEntity<?> listPhones() {
+        return new ResponseEntity<>( phonesService.listAllPhones(),HttpStatus.OK);
     }
 
 }
