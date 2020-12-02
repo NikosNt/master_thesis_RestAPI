@@ -19,4 +19,6 @@ public class Business_ownerService {
     public List<Business_owner> listAllOwners() {
         return businessOwner.findAll();
     }
+
+
 }

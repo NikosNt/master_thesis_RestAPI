@@ -15,9 +15,9 @@ public class Business_phones {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "business_id", nullable = false)
-   // @JsonIgnoreProperties("phones")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Business business;
+    //@JsonIgnoreProperties("phones")
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Business business_phones;
 
 
     public Business_phones() {
@@ -43,10 +43,10 @@ public class Business_phones {
     }
 
     public Business getBusiness() {
-        return business;
+        return business_phones;
     }
-    public void setBusiness(Business business) {
-        this.business = business;
+    public void setBusiness(Business business_phones) {
+        this.business_phones = business_phones;
     }
 
 

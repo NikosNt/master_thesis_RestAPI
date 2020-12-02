@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -19,9 +20,29 @@ public class BusinessController {
     @Autowired
     BusinessService businessService;
 
+    //finds all businesses
     @GetMapping("/all/business")
     public ResponseEntity<?>listBusiness() {
         return new ResponseEntity<>( businessService.listAllBusiness(),HttpStatus.OK);
     }
 
+    //finds business by id
+    @GetMapping("/mod/{moderatorId}")
+    public ResponseEntity<?> listBusinessByModId(@PathVariable Long moderatorId) {
+        Business buss = businessService.listBusinessByModeratorId(moderatorId);
+        return new ResponseEntity<>(buss,HttpStatus.OK);
+    }
+
+    //create new business
+    @PostMapping("/add/business")
+    public ResponseEntity<?> createBusiness(@Valid @RequestBody Business business){
+        Business newBuss = businessService.saveBusiness(business);
+        return new ResponseEntity<>(newBuss,HttpStatus.OK);
+    }
+
+
+    //update business by id
+
+
+    //delete business by id
 }

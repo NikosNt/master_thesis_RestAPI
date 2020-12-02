@@ -20,8 +20,8 @@ public class Business_address {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "business_id", nullable = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Business business;
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Business business_address;
 
     public Business_address() {
     }
@@ -57,6 +57,6 @@ public class Business_address {
     public Float getLongitude() { return longitude; }
     public void setLongitude(Float longitude) { this.longitude = longitude; }
 
-    public Business getBusiness() { return business; }
-    public void setBusiness(Business business) { this.business = business; }
+    public Business getBusiness() { return business_address; }
+    public void setBusiness(Business business_address) { this.business_address = business_address; }
 }

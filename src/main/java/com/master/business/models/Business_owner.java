@@ -16,8 +16,8 @@ public class Business_owner {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "business_id", nullable = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Business business;
+   // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Business business_owner;
 
     public Business_owner() {
     }
@@ -42,9 +42,9 @@ public class Business_owner {
     public void setLname(String lname) { this.lname = lname; }
 
     public Business getBusiness() {
-        return business;
+        return business_owner;
     }
-    public void setBusiness(Business business) {
-        this.business = business;
+    public void setBusiness(Business business_owner) {
+        this.business_owner = business_owner;
     }
 }

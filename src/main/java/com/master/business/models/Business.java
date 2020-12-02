@@ -13,26 +13,31 @@ public class Business {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long moderatorId;
     private String type;
     private String business_name;
     private Float rating;
     private String info;
     private String ref;
 
-    @OneToMany(mappedBy = "business",cascade = CascadeType.ALL)
-    //@JsonIgnoreProperties("business")
+    @OneToMany(mappedBy = "business_phones",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("business")
     private Set<Business_phones>  phones = new HashSet<>();
 
-    @OneToMany(mappedBy = "business",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "business_owner",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("business")
     private Set<Business_owner>  owner = new HashSet<>();
 
-    @OneToMany(mappedBy = "business",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "business_address",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("business")
     private Set<Business_address>  address = new HashSet<>();
 
     public Business() {
     }
 
-    public Business( String type, String business_name, Float rating, String info, String ref) {
+    public Business(Long moderatorId, String type, String business_name, Float rating, String info, String ref) {
+        this.moderatorId=moderatorId;
         this.type = type;
         this.business_name = business_name;
         this.rating = rating;
@@ -40,6 +45,20 @@ public class Business {
         this.ref = ref;
     }
 
+    public Business(Long moderatorId, String type, String business_name, Float rating, String info, String ref, Set<Business_phones> phones, Set<Business_owner> owner, Set<Business_address> address) {
+        this.moderatorId = moderatorId;
+        this.type = type;
+        this.business_name = business_name;
+        this.rating = rating;
+        this.info = info;
+        this.ref = ref;
+        this.phones = phones;
+        this.owner = owner;
+        this.address = address;
+    }
+
+    public Long getModeratorId() { return moderatorId; }
+    public void setModeratorId(Long moderatorId) { this.moderatorId = moderatorId; }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
