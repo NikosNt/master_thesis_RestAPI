@@ -24,7 +24,7 @@ public class Business_phones {
     }
 
 
-    public Business_phones(  String phone_number) {
+    public Business_phones(   String phone_number) {
         this.phone_number = phone_number;
     }
 

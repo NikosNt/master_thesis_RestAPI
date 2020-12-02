@@ -19,6 +19,9 @@ public class BusinessController {
 
     @Autowired
     BusinessService businessService;
+    @Autowired
+    Business_phonesService businessPhonesService;
+
 
     //finds all businesses
     @GetMapping("/all/business")
@@ -40,9 +43,14 @@ public class BusinessController {
         return new ResponseEntity<>(newBuss,HttpStatus.OK);
     }
 
-
     //update business by id
 
 
     //delete business by id
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        businessService.deleteBusiness(id);
+        return "Deleted Successfully";
+    }
+
 }

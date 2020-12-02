@@ -1,7 +1,9 @@
 package com.master.business.service;
 
 import com.master.business.models.Business;
+import com.master.business.models.Business_phones;
 import com.master.business.repository.BusinessRepository;
+import com.master.business.repository.Business_phonesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -32,10 +34,15 @@ public class BusinessService {
         Business savedBusiness = businessRepository.save(business);
         return savedBusiness;
     }
-        //Na ginei update sta phone , adress, owners
+
 
     //update business by id
 
 
     //delete business by id
+    public void deleteBusiness(Long id) {
+        businessRepository.deleteById(id);
+
+    }
+
 }

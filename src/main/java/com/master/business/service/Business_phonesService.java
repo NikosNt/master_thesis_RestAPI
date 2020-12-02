@@ -20,4 +20,9 @@ public class Business_phonesService {
     public List<Business_phones> listAllPhones() {
         return phoneRepository.findAll();
     }
+
+    public Business_phones savePhone(Business_phones phone) {
+        Business_phones savedBusiness_phone = phoneRepository.save(phone);
+        return savedBusiness_phone;
+    }
 }
