@@ -19,25 +19,26 @@ import java.util.NoSuchElementException;
 @RequestMapping("/api/test/services")
 public class TestBusinessController {
 
-
     @Autowired
     Business_addressService addressService;
-
-    @GetMapping("/all/address")
-    public ResponseEntity<?>listAddress() {
-        return new ResponseEntity<>( addressService.listAllAddress(),HttpStatus.OK);
-    }
-
     @Autowired
     Business_ownerService ownerService;
+    @Autowired
+    Business_phonesService phonesService;
+    @Autowired
+    BusinessService businessService;
+
+
+    @GetMapping("/all/business")
+    public ResponseEntity<?>listBusiness() { return new ResponseEntity<>( businessService.listAllBusiness(),HttpStatus.OK); }
+
+    @GetMapping("/all/address")
+    public ResponseEntity<?>listAddress() { return new ResponseEntity<>( addressService.listAllAddress(),HttpStatus.OK); }
 
     @GetMapping("/all/owners")
     public ResponseEntity<?>listOwners() {
         return new ResponseEntity<>( ownerService.listAllOwners(),HttpStatus.OK);
     }
-
-    @Autowired
-    Business_phonesService phonesService;
 
     @GetMapping("/all/phones")
     public ResponseEntity<?> listPhones() {

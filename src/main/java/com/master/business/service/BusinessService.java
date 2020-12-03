@@ -1,14 +1,11 @@
 package com.master.business.service;
 
 import com.master.business.models.Business;
-import com.master.business.models.Business_phones;
 import com.master.business.repository.BusinessRepository;
-import com.master.business.repository.Business_phonesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
-
 import java.util.List;
 
 @Service
@@ -35,14 +32,10 @@ public class BusinessService {
         return savedBusiness;
     }
 
-
     //update business by id
-
+    public Business getBusiness(Long id){ return businessRepository.findById(id).get(); }
 
     //delete business by id
-    public void deleteBusiness(Long id) {
-        businessRepository.deleteById(id);
-
-    }
+    public void deleteBusiness(Long id) { businessRepository.deleteById(id); }
 
 }
