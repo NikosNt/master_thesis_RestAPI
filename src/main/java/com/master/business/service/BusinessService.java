@@ -26,7 +26,7 @@ public class BusinessService {
         return buss;
     }
 
-    //create a business
+    //create a new business
     public Business saveBusiness(Business business) {
         Business savedBusiness = businessRepository.save(business);
         return savedBusiness;
@@ -37,5 +37,10 @@ public class BusinessService {
 
     //delete business by id
     public void deleteBusiness(Long id) { businessRepository.deleteById(id); }
+
+//    public List<Business> listBusinessByTypeAndCity(String type,String city){
+//        List<Business> buss = businessRepository.findByTypeAndCity(type,city);
+//        return buss;
+//    }
 
 }

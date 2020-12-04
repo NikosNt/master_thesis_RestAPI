@@ -1,5 +1,7 @@
 package com.master.business.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -14,9 +16,10 @@ public class Business_owner {
     private String fname;
     private String lname;
 
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "business_id", nullable = false)
-   // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+   // @JsonIgnoreProperties("owner")
     private Business business_owner;
 
     public Business_owner() {
@@ -41,10 +44,10 @@ public class Business_owner {
     public String getLname() { return lname; }
     public void setLname(String lname) { this.lname = lname; }
 
-    public Business getBusiness() {
+    public Business getBusiness_owner() {
         return business_owner;
     }
-    public void setBusiness(Business business_owner) {
+    public void setBusiness_owner(Business business_owner) {
         this.business_owner = business_owner;
     }
 }

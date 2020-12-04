@@ -59,6 +59,10 @@ public class BusinessController {
         }
     }
 
-
+//    @GetMapping("/by/{type}/{city}")
+//    public  ResponseEntity<?> listBusinessByTypeAndCity(@PathVariable String type,@PathVariable String city){
+//        List<Business> buss = businessService.listBusinessByTypeAndCity(type,city);
+//        return new ResponseEntity<>(buss,HttpStatus.OK);
+//    }
 
 }

@@ -1,5 +1,7 @@
 package com.master.business.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -18,9 +20,10 @@ public class Business_address {
     private Float latitude;
     private Float longitude;
 
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "business_id", nullable = false)
-    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+   // @JsonIgnoreProperties("address")
     private Business business_address;
 
     public Business_address() {
@@ -57,6 +60,6 @@ public class Business_address {
     public Float getLongitude() { return longitude; }
     public void setLongitude(Float longitude) { this.longitude = longitude; }
 
-    public Business getBusiness() { return business_address; }
-    public void setBusiness(Business business_address) { this.business_address = business_address; }
+    public Business getBusiness_address() { return business_address; }
+    public void setBusiness_address(Business business_address) { this.business_address = business_address; }
 }
