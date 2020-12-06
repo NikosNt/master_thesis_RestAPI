@@ -38,9 +38,24 @@ public class BusinessService {
     //delete business by id
     public void deleteBusiness(Long id) { businessRepository.deleteById(id); }
 
-//    public List<Business> listBusinessByTypeAndCity(String type,String city){
-//        List<Business> buss = businessRepository.findByTypeAndCity(type,city);
+
+
+//    public List<Business> listBusinessByTypeAndCity(String city,String type){
+//        System.out.println( city + type );
+//        List<Business> buss = businessRepository.findBy_City_Type(city,type);
 //        return buss;
 //    }
+
+    //list all cities of business
+    public List<String> listCities(){
+        List<String> cities = businessRepository.findAllCities();
+        return cities;
+    }
+
+    //list all types of business
+    public List<String> listTypes(){
+        List<String> types = businessRepository.findAllTypes();
+        return types;
+    }
 
 }

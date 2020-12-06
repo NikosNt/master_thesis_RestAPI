@@ -59,9 +59,23 @@ public class BusinessController {
         }
     }
 
-//    @GetMapping("/by/{type}/{city}")
-//    public  ResponseEntity<?> listBusinessByTypeAndCity(@PathVariable String type,@PathVariable String city){
-//        List<Business> buss = businessService.listBusinessByTypeAndCity(type,city);
+    //list all cities of business
+    @GetMapping("/by/cities")
+    public  ResponseEntity<?> listAllCities(){
+        List<String> cities = businessService.listCities();
+        return new ResponseEntity<>(cities,HttpStatus.OK);
+    }
+    //list all types of business
+    @GetMapping("/by/types")
+    public  ResponseEntity<?> listAllTypes(){
+        List<String> types = businessService.listTypes();
+        return new ResponseEntity<>(types,HttpStatus.OK);
+    }
+
+    //
+//    @GetMapping("/by/{city}/{type}")
+//    public  ResponseEntity<?> listBusinessByTypeAndCity(@PathVariable String city,@PathVariable String type){
+//        List<Business> buss = businessService.listBusinessByTypeAndCity(city,type);
 //        return new ResponseEntity<>(buss,HttpStatus.OK);
 //    }
 
