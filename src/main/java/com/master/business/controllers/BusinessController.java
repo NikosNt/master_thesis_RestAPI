@@ -14,6 +14,7 @@ import java.util.NoSuchElementException;
 
 //@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
+@CrossOrigin
 @RequestMapping("/api/services/business")
 public class BusinessController {
 
@@ -72,11 +73,11 @@ public class BusinessController {
         return new ResponseEntity<>(types,HttpStatus.OK);
     }
 
-    //
-//    @GetMapping("/by/{city}/{type}")
-//    public  ResponseEntity<?> listBusinessByTypeAndCity(@PathVariable String city,@PathVariable String type){
-//        List<Business> buss = businessService.listBusinessByTypeAndCity(city,type);
-//        return new ResponseEntity<>(buss,HttpStatus.OK);
-//    }
+
+    @GetMapping("/by/{city}/{type}/{searchBar}/")
+    public  ResponseEntity<?> listBusinessByTypeAndCity(@PathVariable String city,@PathVariable String type,@PathVariable String searchBar){
+        List<Business> buss = businessService.listBusinessByTypeAndCity(city,type,searchBar);
+        return new ResponseEntity<>(buss,HttpStatus.OK);
+    }
 
 }
