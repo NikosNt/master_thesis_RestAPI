@@ -56,7 +56,7 @@ public class BusinessService {
     }
 
 
-
+    //na sbisw ola ta console
     public List<Business> listBusinessByTypeAndCity(String city,String type,String searchBar){
         System.out.println("Sto service -> " + city +" - "+ type + " - "+ searchBar  );
         List<Business> all_business = businessRepository.findAll();
