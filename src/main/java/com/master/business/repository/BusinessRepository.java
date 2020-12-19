@@ -19,9 +19,4 @@ public interface BusinessRepository extends JpaRepository<Business, Long>{
     @Query("select distinct t.type from Business_type t  ")
     List<String> findAllTypes();
 
-//    @Query(value = "select distinct b from Business b inner join Business_address a,Business_type t where a.city= :city_name and t.type = :type_name ")
-//    List<Business> findTypeAndCity(@Param("city_name") String cityName,@Param("type_name") String typeName);
-
-//    List<Business> findByParams( String cityName, String typeName);
-
 }

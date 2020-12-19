@@ -56,19 +56,17 @@ public class BusinessService {
     }
 
 
-    //na sbisw ola ta console
+    //Briskei Business me bash  city, type, searchText
     public List<Business> listBusinessByTypeAndCity(String city,String type,String searchBar){
         System.out.println("Sto service -> " + city +" - "+ type + " - "+ searchBar  );
         List<Business> all_business = businessRepository.findAll();
         List<Business> business = new ArrayList<>();
 
         if( ( city.equals("empty")  || city.equals("All cities") ) && ( type.equals("empty") || type.equals("All types") )  &&  searchBar.equals("empty") ){//an den exw epilogh
-            System.out.println("ola h tipota");
             business = all_business;
         }
 
         if( ( city.equals("empty")  || city.equals("All cities") ) && !type.equals("empty") &&  searchBar.equals("empty") ){//an exw epileksh mono type
-            System.out.println("mono type");
             for(Business bus : all_business){
                 Set<Business_type>  bus_type  = bus.getB_type();
                 for(Business_type bus_t : bus_type){
@@ -80,7 +78,6 @@ public class BusinessService {
         }
 
         if( !city.equals("empty")  && ( type.equals("empty") || type.equals("All types") )  &&  searchBar.equals("empty")) {//an exw epileksh mono city
-            System.out.println("mono city");
             for(Business bus : all_business){
                 Set<Business_address>  bus_address  = bus.getAddress();
                 Integer flag = 0;
@@ -94,7 +91,6 @@ public class BusinessService {
         }
 
         if( ( city.equals("empty")  || city.equals("All cities") ) && !searchBar.equals("empty")){//an exei epileksi mono search bar
-            System.out.println("mono serach me to city na einai -> emty/all cities ");
             for(Business bus : all_business){
                 Set<Business_type>  bus_type  = bus.getB_type();
                 for(Business_type bus_t : bus_type){
