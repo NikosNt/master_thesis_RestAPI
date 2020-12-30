@@ -1,6 +1,6 @@
-package com.master.messages.repository;
+package com.master.messages;
 
-import com.master.messages.models.Messages;
+import com.master.messages.Messages;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -22,8 +22,7 @@ public class Business_owner {
    // @JsonIgnoreProperties("owner")
     private Business business_owner;
 
-    public Business_owner() {
-    }
+    public Business_owner() { }
 
     public Business_owner( String fname, String lname) {
         this.fname = fname;

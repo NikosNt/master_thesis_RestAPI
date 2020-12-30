@@ -24,7 +24,6 @@ public class Business {
 
     @OneToMany( mappedBy = "business_owner",cascade = CascadeType.ALL )
     @JsonIgnoreProperties("business_owner")
-
     private   Set<Business_owner>  owner = new HashSet<>();
 
     @OneToMany(mappedBy = "business_type",cascade = CascadeType.ALL)
@@ -41,18 +40,7 @@ public class Business {
 
     private  Set<Business_phones>  phones = new HashSet<>();
 
-
-
-    public Business() {
-    }
-
-//    public Business(Long moderatorId, String business_name, Float rating, String info, String ref) {
-//        this.moderatorId=moderatorId;
-//        this.business_name = business_name;
-//        this.rating = rating;
-//        this.info = info;
-//        this.ref = ref;
-//    }
+    public Business() { }
 
     public Business(Long moderatorId, String business_name, Float rating, String info, String ref, Set<Business_phones> phones, Set<Business_owner> owner, Set<Business_address> address,Set<Business_type> b_type) {
         this.moderatorId = moderatorId;

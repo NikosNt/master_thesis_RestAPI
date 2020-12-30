@@ -1,4 +1,4 @@
-package com.master.messages.models;
+package com.master.messages;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
