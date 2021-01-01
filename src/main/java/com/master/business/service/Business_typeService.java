@@ -17,6 +17,9 @@ public class Business_typeService {
 
     public List<Business_type> listAllPhones() { return typeRepository.findAll(); }
 
+    /*
+    Delete a type of a Business
+    */
     public void deleteBusinessType(Long id) {
         typeRepository.deleteById(id);
     }

@@ -19,6 +19,9 @@ public class Business_ownerService {
         return ownerRepository.findAll();
     }
 
+    /*
+    Delete a owner of a Business
+    */
     public void deleteBusinessOwner(Long id) {
         ownerRepository.deleteById(id);
     }

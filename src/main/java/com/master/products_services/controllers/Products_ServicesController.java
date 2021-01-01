@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static java.util.Objects.isNull;
+
 
 @RestController
 @CrossOrigin
@@ -22,31 +24,47 @@ public class Products_ServicesController {
     @Autowired
     ServicesService servicesService;
 
-    //view all products of a business by business_id
+    /*
+    Find all products of a business by business_id
+    */
     @GetMapping("/products/{business_id}")
     public  ResponseEntity<?> listBusinessProducts(@PathVariable Long business_id){
         List<Products> products = productsService.listProductsByBusiness_id(business_id);
         if( products.isEmpty()){
-            return new ResponseEntity<>("No products found !",HttpStatus.OK);
+            return new ResponseEntity<>("No products found !",HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(products,HttpStatus.OK);
     }
 
-    //add a product to a business
+    /*
+    Add a product to a business
+    */
     @PostMapping("/products/add")
     public ResponseEntity<?> createProduct(@RequestBody Products product){
         Products newProduct = productsService.saveProduct(product);
+        if(isNull(newProduct)){
+            return new ResponseEntity<>("Product add is not Acceptable",HttpStatus.NOT_ACCEPTABLE);
+        }
         return new ResponseEntity<>(newProduct,HttpStatus.OK);
     }
 
-    //delete a product to a business
+    /*
+    Delete a product to a business
+    */
     @DeleteMapping("/products/delete/{id}")
-    public String productDelete(@PathVariable Long id) {
-        productsService.deleteProduct(id);
-        return "Deleted Successfully";
+    public  ResponseEntity<?> productDelete(@PathVariable Long id) {
+        try{
+            productsService.deleteProduct(id);
+            return new ResponseEntity<>("Deleted Successfully !",HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<> ("Not Found",HttpStatus.NOT_FOUND);
+        }
+
     }
 
-    //update a product to a business
+    /*
+    Update a product to a business
+    */
     @PutMapping("/products/update/{id}")
     public  ResponseEntity<?> productUpdate(@RequestBody Products product, @PathVariable Long id){
         try{
@@ -55,7 +73,7 @@ public class Products_ServicesController {
             productsService.saveProduct(product);
             return new ResponseEntity<>("Updated !",HttpStatus.OK);
         }catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Not Found",HttpStatus.NOT_FOUND);
         }
     }
 
@@ -66,7 +84,7 @@ public class Products_ServicesController {
     public  ResponseEntity<?> listBusinessServices(@PathVariable Long business_id){
         List<Services> services = servicesService.listServicesByBusiness_id(business_id);
         if( services.isEmpty()){
-            return new ResponseEntity<>("No services found !",HttpStatus.OK);
+            return new ResponseEntity<>("No services found !",HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(services,HttpStatus.OK);
     }
@@ -75,14 +93,21 @@ public class Products_ServicesController {
     @PostMapping("/services/add")
     public ResponseEntity<?> createService(@RequestBody Services service){
         Services newService = servicesService.saveService(service);
+        if(isNull(newService)){
+            return new ResponseEntity<>("Service add is not Acceptable",HttpStatus.NOT_ACCEPTABLE);
+        }
         return new ResponseEntity<>(newService,HttpStatus.OK);
     }
 
     //delete a service to a business
     @DeleteMapping("/services/delete/{id}")
-    public String serviceDelete(@PathVariable Long id) {
-        servicesService.deleteService(id);
-        return "Deleted Successfully";
+    public ResponseEntity<?> serviceDelete(@PathVariable Long id) {
+        try {
+            servicesService.deleteService(id);
+            return new ResponseEntity<> ("Deleted Successfully  !",HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<> ("Not Found",HttpStatus.NOT_FOUND);
+        }
     }
 
     //update a service to a business
@@ -94,7 +119,7 @@ public class Products_ServicesController {
             servicesService.saveService(service);
             return new ResponseEntity<>("Updated !",HttpStatus.OK);
         }catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Not Found",HttpStatus.NOT_FOUND);
         }
     }
 }

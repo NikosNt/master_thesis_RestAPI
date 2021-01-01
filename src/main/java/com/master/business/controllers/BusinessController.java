@@ -12,6 +12,8 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static java.util.Objects.isNull;
+
 //@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @CrossOrigin
@@ -25,28 +27,46 @@ public class BusinessController {
     @GetMapping("/all")
     public ResponseEntity<?>listBusiness() { return new ResponseEntity<>( businessService.listAllBusiness(),HttpStatus.OK); }
 
-    //finds business by moderator id
+    /*
+    Finds business by moderator id
+    */
     @GetMapping("/mod/{moderatorId}")
     public ResponseEntity<?> listBusinessByModId(@PathVariable Long moderatorId) {
         Business buss = businessService.listBusinessByModeratorId(moderatorId);
+        if(isNull(buss)){
+            return new ResponseEntity<>("Business not Found", HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(buss,HttpStatus.OK);
     }
 
-    //create new business with all the varibales +phones,address,owner
+    /*
+    Create new business with all the varibales +phones,address,owner
+    */
     @PostMapping("/add")
     public ResponseEntity<?> createBusiness(@Valid @RequestBody Business business){
         Business newBuss = businessService.saveBusiness(business);
+        if(isNull(newBuss)){
+            return new ResponseEntity<>("Business is not Acceptable", HttpStatus.NOT_ACCEPTABLE);
+        }
         return new ResponseEntity<>(newBuss,HttpStatus.OK);
     }
 
-    //delete business by id +phones,address,owner
+    /*
+    Delete business by id +phones,address,owner
+    */
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
-        businessService.deleteBusiness(id);
-        return "Deleted Successfully";
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        try{
+            businessService.deleteBusiness(id);
+            return new ResponseEntity<>( "Deleted Successfully !",HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<> ("Not Found",HttpStatus.NOT_FOUND);
+        }
     }
 
-    //update business by id only the basics and create new phones,address,owner
+    /*
+    Update business by id only the basics and create new phones,address,owner
+    */
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateBusiness(@RequestBody Business business, @PathVariable Long id) {
         try {

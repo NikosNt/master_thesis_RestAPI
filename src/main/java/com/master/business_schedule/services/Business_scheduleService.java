@@ -14,10 +14,38 @@ public class Business_scheduleService {
     @Autowired
     private Business_scheduleRepository business_scheduleRepository;
 
-    //find schedule by business id
+    /*
+    Find schedule of a business by business_id
+    */
     public List<Business_schedule> listScheduleByBusinessId(Long businessId){
         List<Business_schedule> businessSchedule = business_scheduleRepository.findByBusinessId(businessId);
         return businessSchedule;
     }
 
+    /*
+    Create a new schedule entry by day
+    */
+    public Business_schedule saveScheduleDay(Business_schedule schedule){
+        if(schedule.getBusinessId() != null && schedule.getDay() != null && schedule.getState() != null ){
+            Business_schedule saveSchedule = business_scheduleRepository.save(schedule);
+            return  saveSchedule;
+        }else{
+            return null;
+        }
+    }
+
+    /*
+    Delete a schedule entry by day
+    */
+    public void deleteScheduleDay (Long id) {
+        business_scheduleRepository.deleteById(id);
+    }
+
+    /*
+    Update basic info of a schedule entry by day
+    */
+    public Business_schedule getScheduleDay (Long id){
+        return business_scheduleRepository.findById(id).get();
+    }
 }
+

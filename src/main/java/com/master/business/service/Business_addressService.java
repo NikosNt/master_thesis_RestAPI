@@ -19,6 +19,9 @@ public class Business_addressService {
         return addressRepository.findAll();
     }
 
+    /*
+    Delete a address of a Business
+    */
     public void deleteBusinessAddress(Long id) {
         addressRepository.deleteById(id);
     }

@@ -17,6 +17,9 @@ public class Business_phonesService {
 
     public List<Business_phones> listAllPhones() { return phoneRepository.findAll(); }
 
+    /*
+    Delete a phone of a Business
+    */
     public void deleteBusinessPhone(Long id) {
         phoneRepository.deleteById(id);
     }

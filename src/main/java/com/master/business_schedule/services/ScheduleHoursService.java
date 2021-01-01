@@ -12,4 +12,8 @@ public class ScheduleHoursService {
 
     @Autowired
     private ScheduleHoursRepository scheduleHoursRepository;
+
+    //delete a schedule hour
+    public void deleteScheduleHour(Long id){ scheduleHoursRepository.deleteById(id);}
+
 }

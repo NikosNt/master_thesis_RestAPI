@@ -14,22 +14,39 @@ public class ProductsService {
     @Autowired
     private ProductsRepository productsRepository;
 
-    //find all products by business_id
+    /*
+    Find all products by business_id
+     */
     public List<Products> listProductsByBusiness_id(Long id){
         List<Products> prod = productsRepository.findBybusinessId(id);
         return prod;
     }
 
-    //create a product to a business
+    /*
+    Create a product to a business
+    */
     public Products saveProduct(Products product){
-        Products savedProduct = productsRepository.save(product);
-        return savedProduct;
+        if(product.getBusiness_id() != null){
+            Products savedProduct = productsRepository.save(product);
+            return savedProduct;
+        }else{
+            return null;
+        }
+
     }
 
-    //delete a product to a business by id
-    public void deleteProduct(Long id ){ productsRepository.deleteById(id);}
+    /*
+    Delete a product to a business by id
+    */
+    public void deleteProduct(Long id ){
+        productsRepository.deleteById(id);
+    }
 
-    //update a product to a business by id
-    public Products getProduct(Long id){ return productsRepository.findById(id).get(); }
+    /*
+    Update a product to a business by id
+    */
+    public Products getProduct(Long id){
+        return productsRepository.findById(id).get();
+    }
 
 }
