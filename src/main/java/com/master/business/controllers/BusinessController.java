@@ -76,7 +76,7 @@ public class BusinessController {
            // Business UpdatedBusiness = businessService.listBusinessByModeratorId(business.getModeratorId());
             return new ResponseEntity<>("Updated !",HttpStatus.OK);
         } catch (NoSuchElementException e) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Not Found",HttpStatus.NOT_FOUND);
         }
     }
 
