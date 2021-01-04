@@ -17,7 +17,7 @@ public class Business_phones {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "business_id", nullable = false)
-    //@JsonIgnoreProperties("phones")
+    @JsonIgnoreProperties("phones")
     private Business business_phones;
 
 

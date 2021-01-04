@@ -18,7 +18,7 @@ public class Business_type {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "business_id", nullable = false)
-   // @JsonIgnoreProperties("b_type")
+    @JsonIgnoreProperties("b_type")
     private Business business_type;
 
     public Business_type() { }

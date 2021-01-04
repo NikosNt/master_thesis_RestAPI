@@ -23,7 +23,7 @@ public class Business_address {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "business_id", nullable = false)
-   // @JsonIgnoreProperties("address")
+    @JsonIgnoreProperties("address")
     private Business business_address;
 
     public Business_address() {

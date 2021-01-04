@@ -23,11 +23,11 @@ public class Business_schedule {
 
     public Business_schedule() { }
 
-    public Business_schedule(Long id, Long businessId, Integer day, Integer state) {
-        this.id = id;
+    public Business_schedule(Long businessId, Integer day, Integer state, Set<ScheduleHours> hours) {
         this.businessId = businessId;
         this.day = day;
         this.state = state;
+        this.hours = hours;
     }
 
     public Long getId() { return id; }

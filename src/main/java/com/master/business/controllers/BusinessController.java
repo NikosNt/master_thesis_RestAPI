@@ -1,5 +1,6 @@
 package com.master.business.controllers;
 
+import com.master.business.Business_Response;
 import com.master.business.models.*;
 import com.master.business.service.*;
 
@@ -96,7 +97,7 @@ public class BusinessController {
 
     @GetMapping("/by/{city}/{type}/{searchBar}/")
     public  ResponseEntity<?> listBusinessByTypeAndCity(@PathVariable String city,@PathVariable String type,@PathVariable String searchBar){
-        List<Business> buss = businessService.listBusinessByTypeAndCity(city,type,searchBar);
+        List<Business_Response> buss = businessService.listBusinessByTypeAndCity(city,type,searchBar);
         return new ResponseEntity<>(buss,HttpStatus.OK);
     }
 
