@@ -23,6 +23,14 @@ public class Business_scheduleService {
     }
 
     /*
+    Find schedule of a business by business_id and Day
+    */
+    public List<Business_schedule> listScheduleByBusinessIdAndDay(Long businessId,Integer day){
+        List<Business_schedule> businessScheduleDay = business_scheduleRepository.findByBusinessIdAndDay(businessId,day);
+        return businessScheduleDay;
+    }
+
+    /*
     Create a new schedule entry by day
     */
     public Business_schedule saveScheduleDay(Business_schedule schedule){

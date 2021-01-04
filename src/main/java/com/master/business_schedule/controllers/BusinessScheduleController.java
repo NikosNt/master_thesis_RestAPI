@@ -30,9 +30,19 @@ public class BusinessScheduleController {
     public ResponseEntity<?> listScheduleByBusId(@PathVariable Long businessId) {
         List<Business_schedule> schedule = business_scheduleService.listScheduleByBusinessId(businessId);
         if( schedule.isEmpty()){
-            return new ResponseEntity<>("Schedule Day for Business not Found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Schedule for Business not Found", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(schedule, HttpStatus.OK);
+    }
+
+    //find schedule by business id and day for One Day
+    @GetMapping("/business/{businessId}/{day}")
+    public ResponseEntity<?> listScheduleByBusIdAndDay(@PathVariable Long businessId,@PathVariable Integer day) {
+        List<Business_schedule> scheduleDay = business_scheduleService.listScheduleByBusinessIdAndDay(businessId,day);
+        if( scheduleDay.isEmpty()){
+            return new ResponseEntity<>("Schedule Day for Business not Found", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(scheduleDay, HttpStatus.OK);
     }
 
     /*

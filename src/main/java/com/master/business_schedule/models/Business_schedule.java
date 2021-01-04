@@ -14,7 +14,7 @@ public class Business_schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long businessId;
-    private String day;
+    private Integer day;
     private Integer state;
 
     @OneToMany( mappedBy = "scheduleHours",cascade = CascadeType.ALL )
@@ -23,7 +23,7 @@ public class Business_schedule {
 
     public Business_schedule() { }
 
-    public Business_schedule(Long id, Long businessId, String day, Integer state) {
+    public Business_schedule(Long id, Long businessId, Integer day, Integer state) {
         this.id = id;
         this.businessId = businessId;
         this.day = day;
@@ -36,8 +36,8 @@ public class Business_schedule {
     public Long getBusinessId() { return businessId; }
     public void setBusinessId(Long businessId) { this.businessId = businessId; }
 
-    public String getDay() { return day; }
-    public void setDay(String day) { this.day = day; }
+    public Integer getDay() { return day; }
+    public void setDay(Integer day) { this.day = day; }
 
     public Integer getState() { return state; }
     public void setState(Integer state) { this.state = state; }
