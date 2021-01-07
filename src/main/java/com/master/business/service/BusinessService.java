@@ -50,7 +50,7 @@ public class BusinessService {
             Set<ScheduleHours> EmptySet = Collections.<ScheduleHours>emptySet();
 
             for(Integer i=0;i<7;i++) {
-                Business_schedule schedule = new Business_schedule(savedBusiness.getId(),i,0,EmptySet );
+                Business_schedule schedule = new Business_schedule(savedBusiness.getId(),i,-1,EmptySet );
                 business_scheduleRepository.save(schedule);
             }
             return savedBusiness;

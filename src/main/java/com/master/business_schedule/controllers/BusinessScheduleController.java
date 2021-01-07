@@ -35,6 +35,7 @@ public class BusinessScheduleController {
         return new ResponseEntity<>(schedule, HttpStatus.OK);
     }
 
+    //MALON DEN 8A TO XREIASTO
     //find schedule by business id and day for One Day
     @GetMapping("/business/{businessId}/{day}")
     public ResponseEntity<?> listScheduleByBusIdAndDay(@PathVariable Long businessId,@PathVariable Integer day) {
@@ -45,6 +46,7 @@ public class BusinessScheduleController {
         return new ResponseEntity<>(scheduleDay, HttpStatus.OK);
     }
 
+    //MALON DEN 8A TO XREIASTO
     /*
     Save a schedule Day for a business( me wres an 8elw )
     */
@@ -57,6 +59,7 @@ public class BusinessScheduleController {
         return new ResponseEntity<>(newDaySchedule,HttpStatus.OK);
     }
 
+    //MALON DEN 8A TO XREIASTO
     /*
     Delete a schedule Day for a business ( me tis wres)
     */
