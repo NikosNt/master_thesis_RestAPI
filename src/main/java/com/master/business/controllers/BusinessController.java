@@ -35,7 +35,7 @@ public class BusinessController {
     public ResponseEntity<?> listBusinessByModId(@PathVariable Long moderatorId) {
         Business buss = businessService.listBusinessByModeratorId(moderatorId);
         if(isNull(buss)){
-            return new ResponseEntity<>("Business not Found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>( HttpStatus.OK);
         }
         return new ResponseEntity<>(buss,HttpStatus.OK);
     }
