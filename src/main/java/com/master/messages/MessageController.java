@@ -22,7 +22,7 @@ public class MessageController {
     public ResponseEntity<?> listMessages(@PathVariable Long userId,@PathVariable Long businessId){
         List<Messages> messages = messageService.listMessagesUserBusiness(userId,businessId);
         if( messages.isEmpty()){
-            return new ResponseEntity<>("No messages found !", HttpStatus.OK);
+            return new ResponseEntity<>( HttpStatus.OK);
         }
         return new ResponseEntity<>(messages,HttpStatus.OK);
     }
