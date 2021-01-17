@@ -23,6 +23,8 @@ public class Products_ServicesController {
     ProductsService productsService;
     @Autowired
     ServicesService servicesService;
+    @Autowired
+    Product_PhotosService product_photosService;
 
     /*
     Find all products of a business by business_id
@@ -31,7 +33,7 @@ public class Products_ServicesController {
     public  ResponseEntity<?> listBusinessProducts(@PathVariable Long business_id){
         List<Products> products = productsService.listProductsByBusiness_id(business_id);
         if( products.isEmpty()){
-            return new ResponseEntity<>("No products found !",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(products,HttpStatus.OK);
     }
@@ -76,7 +78,16 @@ public class Products_ServicesController {
             return new ResponseEntity<>("Not Found",HttpStatus.NOT_FOUND);
         }
     }
-
+    //-------------------------------------------------------------------------------------------------
+    @DeleteMapping("/products/delete/photo/{id}")
+    public ResponseEntity<?> productPhotoDelete(@PathVariable Long id){
+        try{
+            product_photosService.deleteProductPhoto(id);
+            return new ResponseEntity<>("Deleted Successfully !",HttpStatus.OK);
+        }catch (NoSuchElementException e){
+            return new ResponseEntity<> ("Not Found",HttpStatus.NOT_FOUND);
+        }
+    }
     //--------------------------------------------------------------------------------------------------
 
     //view all services of a business by business_id
@@ -84,7 +95,7 @@ public class Products_ServicesController {
     public  ResponseEntity<?> listBusinessServices(@PathVariable Long business_id){
         List<Services> services = servicesService.listServicesByBusiness_id(business_id);
         if( services.isEmpty()){
-            return new ResponseEntity<>("No services found !",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(services,HttpStatus.OK);
     }

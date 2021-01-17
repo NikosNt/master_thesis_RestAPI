@@ -1,6 +1,12 @@
 package com.master.products_services.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.master.business_schedule.models.ScheduleHours;
+
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(	name = "products")
@@ -14,6 +20,10 @@ public class Products {
     private Integer number;
     private Float value;
     private String info;
+
+    @OneToMany( mappedBy = "product",cascade = CascadeType.ALL )
+    @JsonIgnoreProperties("product")
+    private Set<Product_Photos> photos_path = new HashSet<>();
 
     public Products() {}
 
@@ -42,4 +52,13 @@ public class Products {
 
     public String getInfo() { return info; }
     public void setInfo(String info) { this.info = info; }
+
+    public Set<Product_Photos> getPhotos_path() { return photos_path; }
+
+    public void setPhotos_path(Set<Product_Photos> photos_path) {
+        this.photos_path = photos_path;
+        for(Product_Photos p : photos_path){
+            p.setProduct(this);
+        }
+    }
 }
