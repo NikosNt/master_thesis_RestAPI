@@ -23,6 +23,14 @@ public class MessageService {
     }
 
     /*
+    find messages for business
+    */
+    public List<Messages> listMessagesBusiness( Long businessId){
+        List<Messages> messages = messageRepository.findByBusinessId(businessId);
+        return messages;
+    }
+
+    /*
     add a new message
     */
     public Messages saveMessage(Messages message){

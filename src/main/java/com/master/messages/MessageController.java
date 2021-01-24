@@ -19,8 +19,18 @@ public class MessageController {
 
     // view messages between user and a business
     @GetMapping("/view/{userId}/{businessId}")
-    public ResponseEntity<?> listMessages(@PathVariable Long userId,@PathVariable Long businessId){
+    public ResponseEntity<?> listMessagesUserBus(@PathVariable Long userId,@PathVariable Long businessId){
         List<Messages> messages = messageService.listMessagesUserBusiness(userId,businessId);
+        if( messages.isEmpty()){
+            return new ResponseEntity<>( HttpStatus.OK);
+        }
+        return new ResponseEntity<>(messages,HttpStatus.OK);
+    }
+
+    // view messages between user and a business
+    @GetMapping("/view/{businessId}")
+    public ResponseEntity<?> listMessagesBus(@PathVariable Long businessId){
+        List<Messages> messages = messageService.listMessagesBusiness(businessId);
         if( messages.isEmpty()){
             return new ResponseEntity<>( HttpStatus.OK);
         }

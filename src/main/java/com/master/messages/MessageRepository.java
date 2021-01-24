@@ -10,4 +10,5 @@ import java.util.List;
 public interface MessageRepository extends  JpaRepository<Messages,Long> {
 
     List<Messages> findByUserIdAndBusinessId(Long userId,Long businessId);
+    List<Messages> findByBusinessId(Long businessId);
 }
