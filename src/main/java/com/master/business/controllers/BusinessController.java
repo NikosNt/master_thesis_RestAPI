@@ -73,7 +73,7 @@ public class BusinessController {
         try {
             Business existBusiness = businessService.getBusiness(id);
             business.setId(id);
-            businessService.saveBusiness(business);
+            businessService.updateSaveBusiness(business);
            // Business UpdatedBusiness = businessService.listBusinessByModeratorId(business.getModeratorId());
             return new ResponseEntity<>("Updated !",HttpStatus.OK);
         } catch (NoSuchElementException e) {

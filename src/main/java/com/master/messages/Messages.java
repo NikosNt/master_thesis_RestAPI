@@ -14,6 +14,7 @@ public class Messages {
     private Long businessId;
     private Long userId;
     private Integer sender;
+    private String username_sender;
     private String title;
     private String message;
 
@@ -22,10 +23,11 @@ public class Messages {
 
     public Messages() { }
 
-    public Messages(Long businessId, Long userId, Integer sender, String title, String message, Date date_time) {
+    public Messages(Long businessId, Long userId, Integer sender,String username_receiver, String title, String message, Date date_time) {
         this.businessId = businessId;
         this.userId = userId;
         this.sender = sender;
+        this.username_sender = username_sender;
         this.title = title;
         this.message = message;
         this.date_time = date_time;
@@ -42,6 +44,9 @@ public class Messages {
 
     public Integer getSender() { return sender; }
     public void setSender(Integer sender) { this.sender = sender; }
+
+    public String getUsername_sender() { return username_sender; }
+    public void setUsername_sender(String username_sender) { this.username_sender = username_sender; }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }

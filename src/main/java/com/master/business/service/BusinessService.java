@@ -66,6 +66,15 @@ public class BusinessService {
         return businessRepository.findById(id).get();
     }
 
+    public Business updateSaveBusiness(Business business) {
+        if(business.getModeratorId()!= null && business.getBusiness_name() != null){
+            Business savedBusiness = businessRepository.save(business);
+            return savedBusiness;
+        }else{
+            return null ;
+        }
+    }
+
     /*
     Delete business by id
     */
