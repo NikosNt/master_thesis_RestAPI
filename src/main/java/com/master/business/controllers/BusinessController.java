@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
@@ -28,6 +29,18 @@ public class BusinessController {
     @GetMapping("/all")
     public ResponseEntity<?>listBusiness() { return new ResponseEntity<>( businessService.listAllBusiness(),HttpStatus.OK); }
 
+    /*
+    Finds business by business id
+    (Malon den xreiazete to endpoint)
+    */
+    @GetMapping("/{businessID}")
+    public ResponseEntity<?> listBusinessByBusId(@PathVariable Long businessID ) {
+        Business buss = businessService.listBusinessByBusinessId(businessID);
+        if(isNull(buss)){
+            return new ResponseEntity<>( HttpStatus.OK);
+        }
+        return new ResponseEntity<>(buss,HttpStatus.OK);
+    }
     /*
     Finds business by moderator id
     */

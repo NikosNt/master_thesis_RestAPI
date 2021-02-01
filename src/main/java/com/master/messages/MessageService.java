@@ -38,7 +38,7 @@ public class MessageService {
                 messages_users.add(m);
             }
         }
-//        for(Messages m :final_users){
+//        for(Messages m :messages_users){
 //            System.out.println(m.getUserId()+" - "+m.getBusinessId());
 //        }
 

@@ -12,7 +12,6 @@ import com.master.business_schedule.repository.Business_scheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -32,6 +31,13 @@ public class BusinessService {
         return businessRepository.findAll();
     }
 
+    /*
+    Find business by business id
+    */
+    public Business listBusinessByBusinessId(Long businessId) {
+        Business buss = businessRepository.findById(businessId).get();
+        return buss;
+    }
     /*
     Find business by moderator id
     */
