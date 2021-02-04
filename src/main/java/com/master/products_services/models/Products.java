@@ -21,10 +21,6 @@ public class Products {
     private Float value;
     private String info;
 
-    @OneToMany( mappedBy = "product",cascade = CascadeType.ALL )
-    @JsonIgnoreProperties("product")
-    private Set<Product_Photos> photos_path = new HashSet<>();
-
     public Products() {}
 
     public Products(Long businessId, String name, Integer number, Float value, String info) {
@@ -53,12 +49,4 @@ public class Products {
     public String getInfo() { return info; }
     public void setInfo(String info) { this.info = info; }
 
-    public Set<Product_Photos> getPhotos_path() { return photos_path; }
-
-    public void setPhotos_path(Set<Product_Photos> photos_path) {
-        this.photos_path = photos_path;
-        for(Product_Photos p : photos_path){
-            p.setProduct(this);
-        }
-    }
 }

@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 @Repository
-public interface Product_PhotosRepository  extends JpaRepository<Product_Photos, Long>{
+public interface Product_PhotosRepository  extends JpaRepository<Product_Photos, String>{
 }

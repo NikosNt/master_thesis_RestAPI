@@ -1,41 +1,33 @@
-package com.master.products_services.models;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.GenericGenerator;
+package com.master.products_services.message;
 
-
-import javax.persistence.*;
-
-@Entity
-@Table(	name = "products_photos_path")
-public class Product_Photos {
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
-
+public class ResponseFile {
+    private  String id;
     private String name;
-
+    private String url;
     private String type;
-
+    private long size;
     private Long productId;
-
     private Long businessId;
-    @Lob
-    private byte[] data;
 
-    public Product_Photos() {
+    public ResponseFile() {
     }
 
-    public Product_Photos(String name, String type, Long productId, Long businessId, byte[] data) {
+    public ResponseFile(String id,String name, String url, String type, long size, Long productId,Long businessId) {
+        this.id = id;
         this.name = name;
+        this.url = url;
         this.type = type;
+        this.size = size;
         this.productId = productId;
         this.businessId = businessId;
-        this.data = data;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -46,6 +38,14 @@ public class Product_Photos {
         this.name = name;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public String getType() {
         return type;
     }
@@ -54,12 +54,12 @@ public class Product_Photos {
         this.type = type;
     }
 
-    public byte[] getData() {
-        return data;
+    public long getSize() {
+        return size;
     }
 
-    public void setData(byte[] data) {
-        this.data = data;
+    public void setSize(long size) {
+        this.size = size;
     }
 
     public Long getProductId() {
@@ -77,5 +77,5 @@ public class Product_Photos {
     public void setBusinessId(Long businessId) {
         this.businessId = businessId;
     }
-
 }
+
