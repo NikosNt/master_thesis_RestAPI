@@ -1,8 +1,6 @@
 package com.master.auth.controllers;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -13,7 +11,9 @@ import com.master.auth.models.User;
 import com.master.auth.payload.request.LoginRequest;
 import com.master.auth.payload.request.SignupRequest;
 
+import com.master.business.models.Business;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,11 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.master.auth.payload.response.JwtResponse;
 import com.master.auth.payload.response.MessageResponse;
@@ -133,4 +129,12 @@ public class AuthController {
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
+
+	@GetMapping("/user/{id}")
+	public ResponseEntity<?> updateBusiness(@PathVariable Long id) {
+		Optional<User> user = userRepository.findById(id);
+		return new ResponseEntity<>(user,HttpStatus.OK);
+
+	}
+
 }
