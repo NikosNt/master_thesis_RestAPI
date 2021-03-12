@@ -114,7 +114,7 @@ public class BusinessService {
         List<Business> all_business = businessRepository.findAll();
         List<Business> business = new ArrayList<>();
 
-        if( ( city.equals("empty")  || city.equals("All cities") ) && ( type.equals("empty") || type.equals("All types") )  &&  searchBar.equals("empty") ){//an den exw epilogh
+        if( ( city.equals("empty")  || city.equals("Όλες") ) && ( type.equals("empty") || type.equals("Όλες") )  &&  searchBar.equals("empty") ){//an den exw epilogh
 //            for(Business bus : all_business){
 //                business.add(bus);
 //            }
@@ -123,7 +123,7 @@ public class BusinessService {
             business = all_business;
         }
 
-        if( ( city.equals("empty")  || city.equals("All cities") ) && !type.equals("empty") &&  searchBar.equals("empty") ){//an exw epileksh mono type
+        if( ( city.equals("empty")  || city.equals("Όλες") ) && !type.equals("empty") &&  searchBar.equals("empty") ){//an exw epileksh mono type
             for(Business bus : all_business){
                 Set<Business_type>  bus_type  = bus.getB_type();
                 for(Business_type bus_t : bus_type){
@@ -134,7 +134,7 @@ public class BusinessService {
             }
         }
 
-        if( !city.equals("empty")  && ( type.equals("empty") || type.equals("All types") )  &&  searchBar.equals("empty")) {//an exw epileksh mono city
+        if( !city.equals("empty")  && ( type.equals("empty") || type.equals("Όλες") )  &&  searchBar.equals("empty")) {//an exw epileksh mono city
             for(Business bus : all_business){
                 Set<Business_address>  bus_address  = bus.getAddress();
                 Integer flag = 0;
@@ -147,7 +147,7 @@ public class BusinessService {
             }
         }
 
-        if( ( city.equals("empty")  || city.equals("All cities") ) && !searchBar.equals("empty")){//an exei epileksi mono search bar
+        if( ( city.equals("empty")  || city.equals("Όλες") ) && !searchBar.equals("empty")){//an exei epileksi mono search bar
             for(Business bus : all_business){
                 Set<Business_type>  bus_type  = bus.getB_type();
                 for(Business_type bus_t : bus_type){
@@ -158,7 +158,7 @@ public class BusinessService {
             }
         }
 
-        if( (!city.equals("empty") && !city.equals("All cities")) && (!type.equals("empty") && !type.equals("All types")) && searchBar.equals("empty") ){//an exei epileksi polh kai type
+        if( (!city.equals("empty") && !city.equals("Όλες")) && (!type.equals("empty") && !type.equals("Όλες")) && searchBar.equals("empty") ){//an exei epileksi polh kai type
             List<Business> temp_business = new ArrayList<>();
             for(Business bus : all_business){
                 Set<Business_address>  bus_address  = bus.getAddress();
@@ -180,7 +180,7 @@ public class BusinessService {
             }
         }
 
-        if( (!city.equals("empty") && !city.equals("All cities")) && !searchBar.equals("empty")){//an exei epileksi polh kai search
+        if( (!city.equals("empty") && !city.equals("Όλες")) && !searchBar.equals("empty")){//an exei epileksi polh kai search
             List<Business> temp_business = new ArrayList<>();
             for(Business bus : all_business){
                 Set<Business_address>  bus_address  = bus.getAddress();

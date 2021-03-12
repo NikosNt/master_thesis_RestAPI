@@ -23,7 +23,7 @@ public class Messages {
 
     public Messages() { }
 
-    public Messages(Long businessId, Long userId, Integer sender,String username_receiver, String title, String message, Date date_time) {
+    public Messages(Long businessId, Long userId, Integer sender,String username_sender, String title, String message, Date date_time) {
         this.businessId = businessId;
         this.userId = userId;
         this.sender = sender;
