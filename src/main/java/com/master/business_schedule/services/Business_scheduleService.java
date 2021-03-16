@@ -50,6 +50,14 @@ public class Business_scheduleService {
     }
 
     /*
+    Delete all the schedule for a bsiness
+
+    */
+    public void deleteScheduleByBusiness (Long id) {
+        business_scheduleRepository.deleteByBusinessId(id);
+    }
+
+    /*
     Update basic info of a schedule entry by day
     */
     public Business_schedule getScheduleDay (Long id){

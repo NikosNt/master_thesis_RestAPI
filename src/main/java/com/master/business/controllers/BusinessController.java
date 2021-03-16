@@ -4,6 +4,7 @@ import com.master.business.Business_Response;
 import com.master.business.models.*;
 import com.master.business.service.*;
 
+import com.master.business_schedule.services.Business_scheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,8 @@ public class BusinessController {
 
     @Autowired
     BusinessService businessService;
+    @Autowired
+    Business_scheduleService business_scheduleService;
 
     //finds all business
     @GetMapping("/all")
@@ -72,6 +75,7 @@ public class BusinessController {
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try{
             businessService.deleteBusiness(id);
+            business_scheduleService.deleteScheduleByBusiness(id);
             return new ResponseEntity<>( "Deleted Successfully !",HttpStatus.OK);
         }catch(Exception e){
             return new ResponseEntity<> ("Not Found",HttpStatus.NOT_FOUND);

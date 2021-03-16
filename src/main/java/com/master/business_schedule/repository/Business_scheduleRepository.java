@@ -13,4 +13,5 @@ public interface Business_scheduleRepository extends  JpaRepository<Business_sch
 
     List<Business_schedule> findByBusinessIdAndDay(Long businessId,Integer day);
 
+    void deleteByBusinessId(Long id);
 }
